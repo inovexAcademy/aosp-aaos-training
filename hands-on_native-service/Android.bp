@@ -1,0 +1,61 @@
+// Copyright (C) 2024 inovex
+// SPDX-License-Identifier: Apache-2.0
+
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+cc_defaults {
+    name: "demo_defaults",
+    shared_libs: [
+        "libbase",
+        "libbinder",
+        "liblog",
+    ],
+    static_libs: [
+        "demo_aidl_interface-cpp",
+        "libavb",
+        "libcutils",
+        "libutils",
+        "libc++fs",
+    ],
+    target: {
+        android: {
+            shared_libs: [
+                "libprocessgroup",
+                "libvndksupport",
+            ],
+        },
+    },
+}
+
+cc_binary {
+    name: "demo",
+    defaults: [
+        "demo_defaults",
+    ],
+    srcs: [
+        "daemon.cpp",
+        "demo_service.cpp",
+    ],
+}
+
+aidl_interface {
+    name: "demo_aidl_interface",
+    unstable: true,
+    srcs: [":demoservice_aidl"],
+    local_include_dir: "aidl",
+    backend: {
+        ndk: {
+            enabled: false,
+        },
+    },
+}
+
+filegroup {
+    name: "demoservice_aidl",
+    srcs: [
+        "aidl/example/demo/IDemoService.aidl",
+    ],
+    path: "aidl",
+}
