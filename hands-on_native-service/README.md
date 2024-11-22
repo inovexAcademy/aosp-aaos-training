@@ -52,6 +52,7 @@ adb sync system
 And then run the service manually `demo`.
 
 Call the service with the `service call ...` util.
+See the documentation of the `service` util on how the call feature works.
 
 
 Verify:
@@ -70,6 +71,7 @@ But if the service is running under the `init` daemon these logs would not show
 up in the logcat.
 
 Add logging to the system logcat buffer to the service calls.
+See the readme of the liblog library [/system/logging/liblog/README.md](https://cs.android.com/android/platform/superproject/main/+/main:system/logging/liblog/README.md).
 
 
 ## Verify
@@ -108,7 +110,7 @@ Call the new service implementation. (The `service` command has a help / usage m
 
 
 See:
- - Other services.
+ - Other services (e.g system/gsid).
  - https://android.googlesource.com/platform/system/core/+/master/init/README.md
 
 
