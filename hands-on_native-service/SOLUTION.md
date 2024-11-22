@@ -39,8 +39,3 @@ Logcat output
 11-19 14:49:25.882  9610  9610 I demo    : Register to service manager
 11-19 14:49:25.883  9610  9610 I demo    : Service demoservice is registerd
 ```
-
-
-# Step 4
-
-
