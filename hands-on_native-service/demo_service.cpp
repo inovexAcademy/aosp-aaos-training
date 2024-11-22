@@ -37,7 +37,6 @@ void DemoService::RegisterService(const char* name) {
     }
 }
 
-
 /**
  * getHelloWorld is inoveked by a remote service over binder.
  */

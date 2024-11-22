@@ -40,6 +40,16 @@ cc_binary {
     ],
 }
 
+cc_binary {
+    name: "demo-client",
+    defaults: [
+        "demo_defaults",
+    ],
+    srcs: [
+        "client.cpp",
+    ],
+}
+
 aidl_interface {
     name: "demo_aidl_interface",
     unstable: true,
