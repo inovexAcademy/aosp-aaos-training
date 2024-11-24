@@ -7,3 +7,8 @@ and AAOS training at inovex.
 
 In the directory [container/](container/) you find a docker/podman build
 container for building the AOSP source tree.
+
+## Hands-On: native example service
+
+The directory [hands-on_native-service/](hands-on_native-service/) contains
+an example service for the training.
