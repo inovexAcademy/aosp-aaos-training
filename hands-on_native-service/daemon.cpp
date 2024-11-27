@@ -19,11 +19,10 @@ int main() {
     std::cout << "Register the `demoservice` to the service manager\n";
 
     example::demo::DemoService::RegisterService(example::demo::kDemoServiceName);
-    {
-        sp<android::ProcessState> ps(ProcessState::self());
-        ps->startThreadPool();
-        ps->giveThreadPoolName();
-    }
+
+    sp<android::ProcessState> ps(ProcessState::self());
+    ps->startThreadPool();
+    ps->giveThreadPoolName();
 
     std::cout << "Service demoservice is registerd\n";
 

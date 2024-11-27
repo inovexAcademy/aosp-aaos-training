@@ -80,7 +80,13 @@ But if the service is running under the `init` daemon these logs would not show
 up in the logcat.
 
 Add logging to the system logcat buffer to the service calls.
+
+
+There is a C library liblog.
+And the C++ logger with `android-base/logging.h` in the libbase.
+
 See the readme of the liblog library [/system/logging/liblog/README.md](https://cs.android.com/android/platform/superproject/main/+/main:system/logging/liblog/README.md).
+See the readme of the libbase library [/system/libbase/README.md](https://cs.android.com/android/platform/superproject/main/+/main:system/libbase/README.md).
 
 
 ## Verify
