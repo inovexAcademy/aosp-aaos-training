@@ -57,18 +57,34 @@ adb sync system
 And then run the service manually `demo`.
 In a new window and `adb shell` session test it with the `demo-client hello`.
 
-Call the service with the `service call ...` util.
-See the documentation of the `service` util on how the call feature works.
+Call the service with the `service call ...` utility
+See the documentation of the `service` utility on how the call feature works.
 
 If you are curious on how the generated code for the AIDL file looks, you can
-find it under:
-`out/soong/.intermediates/system/demo/demo_aidl_interface-cpp-source/gen/include/example/demo`
+find the relevant files in the `out` directory:
+
+```
+out/soong/.intermediates/system/demo/demo_aidl_interface-cpp-source/gen/
+├── example
+│   └── demo
+│       ├── IDemoService.cpp
+│       └── IDemoService.cpp.d
+├── include
+│   ├── example
+│   │   └── demo
+│   │       ├── BnDemoService.h
+│   │       ├── BpDemoService.h
+│   │       └── IDemoService.h
+.   .
+.   .
+```
 
 
 Verify:
 
  - The running service is shown in `service list`.
-    (If the service list command hangs stop it with CTRL-C)
+   (If the `service list` command hangs stop it with CTRL-C.
+   As an alternative, you might want to fall back to using `dumpsys -l`)
  - Running `demo-client hello` works.
  - `service call ...` works.
 
