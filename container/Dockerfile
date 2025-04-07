@@ -20,25 +20,28 @@ RUN apt-get update && apt-get install -qy --no-install-recommends \
         xxd less ninja-build rsync neovim \
         # Kernel build \
         cpio lz4 \
-        # Cuttlefish
-        git devscripts config-package-dev debhelper-compat golang curl wget \
+        # Cuttlefish \
+        sudo git devscripts config-package-dev debhelper-compat golang curl wget \
         devscripts equivs \
         clang pkg-config libfmt-dev libgflags-dev libjsoncpp-dev \
         libcurl4-openssl-dev libgoogle-glog-dev libgtest-dev \
         libxml2-dev uuid-dev libprotobuf-dev libprotobuf-c-dev protobuf-compiler libz3-dev \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# Install bazel
-RUN apt install apt-transport-https curl gnupg -qy \
-    && curl -fsSL https://bazel.build/bazel-release.pub.gpg | gpg --dearmor >bazel-archive-keyring.gpg \
-    && mv bazel-archive-keyring.gpg /usr/share/keyrings \
-    && echo "deb [arch=amd64 signed-by=/usr/share/keyrings/bazel-archive-keyring.gpg] https://storage.googleapis.com/bazel-apt stable jdk1.8" | tee /etc/apt/sources.list.d/bazel.list \
-    && apt update && apt install bazel
 
-# Install cuttlefish environment
-RUN mkdir /tools && cd /tools && git clone https://github.com/google/android-cuttlefish && cd android-cuttlefish \
-    && cd base && debuild -i -us -uc -b -d && cd .. \
-    && cd frontend && debuild -i -us -uc -b -d && cd .. \
+# Build and install cuttlefish
+# - pin to a specific commit "0858763784" to avoid build issues when upstream
+#   changes.
+# - download, build and install in multiple steps to make updating the
+#   Dockerfile easier.
+RUN mkdir /tools && cd /tools \
+    && git clone https://github.com/google/android-cuttlefish && cd android-cuttlefish \
+    && git switch -c build-branch 0858763784e322278d5a23feb3456d66cbc0f17c
+
+RUN cd /tools/android-cuttlefish \
+    && tools/buildutils/build_packages.sh
+
+RUN cd /tools/android-cuttlefish \
     && (dpkg -i ./cuttlefish-base_*_*64.deb || apt-get install -fqy) \
     && (dpkg -i ./cuttlefish-user_*_*64.deb || apt-get install -fqy)
 
