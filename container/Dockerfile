@@ -36,7 +36,7 @@ RUN apt-get update && apt-get install -qy --no-install-recommends \
 #   Dockerfile easier.
 RUN mkdir /tools && cd /tools \
     && git clone https://github.com/google/android-cuttlefish && cd android-cuttlefish \
-    && git switch -c build-branch 0858763784e322278d5a23feb3456d66cbc0f17c
+    && git switch -c build-branch c4f1643479f98bdc7310d281e81751188595233b
 
 RUN cd /tools/android-cuttlefish \
     && tools/buildutils/build_packages.sh
