@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">AOSPTraining Graphics</string>
+    <string name="videoSize">Video Size: %1$dx%2$d</string>
+    <string name="framerate">Framerate: %1$.1f frames/sec</string>
+    <string name="bitrate">Bitrate: %1$.1f kBits/sec</string>
+    <string name="totalBufferSize">Total Buffer Size: %1$.1f MiB</string>
+    <string name="duration">Duration: %1$.2f secs</string>
+    <string name="circularBufferState">CircularBuffer State: %1$s</string>
+    <string name="byteBufferBool">ByteBuffer Pool: %1$.02f MiB (%2$d/%3$d buffers (used/alloc))</string>
+    <string name="startRecording">Start Recording</string>
+    <string name="stopRecording">Stop Recording</string>
+    <string name="playLastVideo">Play Last Video</string>
+</resources>
