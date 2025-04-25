@@ -3,7 +3,6 @@ package de.inovex.aosptraining.graphics
 import android.app.Activity
 import android.os.Bundle
 import android.os.SystemClock
-import android.os.Trace
 import android.util.Log
 import android.view.SurfaceHolder
 import android.view.SurfaceView
@@ -58,15 +57,13 @@ class GlesImageWriterTestActivity : Activity() {
     }
 
     fun draw() {
-        Trace.beginSection("draw")
         val writer = glesImageWriter ?: return
         Log.d(TAG, "draw(): counter=$counter")
         writer.makeCurrent()
         generateSurfaceFrame(surfaceView.width, surfaceView.height, counter)
-        writer.setPresentationTime(SystemClock.elapsedRealtimeNanos()) // TODO
+        writer.setPresentationTime(SystemClock.elapsedRealtimeNanos())
         writer.swapBuffers()
         counter++
-        Trace.endSection()
     }
 
     override fun onPause() {
