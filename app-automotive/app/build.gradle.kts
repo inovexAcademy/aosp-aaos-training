@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace = "de.inovex.aosptraining.automotive"
-    compileSdk = 35
+    compileSdk = 34
     useLibrary("android.car")
     defaultConfig {
         applicationId = "de.inovex.aosptraining.automotive"
         minSdk = 32
-        targetSdk = 35
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
