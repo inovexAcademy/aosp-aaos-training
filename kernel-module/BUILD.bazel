@@ -1,0 +1,51 @@
+# Bazel uses a Python-ish syntax. The load statement is somewhat equivalent
+# to a Python module import.
+# I.e. the next line makes the `ddk_module` function available for this file.
+# We reference the file `build/kernel/kleaf/kernel.bzl` from the kernel source
+# tree here.
+# Check out the documentation [1] for more information.
+#
+# [1] https://android.googlesource.com/kernel/build/+/refs/heads/main/kleaf/docs/ddk/rules.md#ddk_module
+load("//build/kernel/kleaf:kernel.bzl", "ddk_module")
+
+
+# Module: aosp_training_random
+#
+# This is a "library" module.
+# I.e. it does not provide any driver functionality and is not started by some
+# `*init()` function but is invoked by other kernel code.
+# It provides a single function to "generate" random numbers.
+#
+# You will have to enable (comment in) this module and add the missing line
+# making the headers available to other modules.
+#ddk_module(
+#    name = "aosp_training_random",
+#    srcs = glob(["random/**/*.c"]),
+#    out = "aosp_training_rng.ko",
+#    hdrs = [],
+#    kernel_build = "//common:kernel_x86_64",
+#    deps = ["//common:all_headers_x86_64"],
+#)
+
+# Module: aosp_training_random
+#
+# This is a "driver" like module.
+# I.e. it uses `*init()` and `*exit()` functions to setup things (sysfs
+# entries, in this case) to be invoked from outside the kernel code -- in this
+# case by a user space process reading from the sysfs entries.
+#
+# At the beginning when you start the exercise, this module is "stand alone"
+# and only provides a single sysfs entry.
+# You will have to extend both, the code and the module definition below to
+# make it interact with the random number generator created above.
+# For instance, we need to tell kleaf that we want the modules to depend on
+# each other.
+ddk_module(
+    name = "training_mod",
+    srcs = ["training_mod.c"],
+    out = "aosp_training_sysfs.ko",
+    kernel_build = "//common:kernel_x86_64",
+    deps = [
+        "//common:all_headers_x86_64",
+    ],
+)
