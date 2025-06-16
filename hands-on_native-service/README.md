@@ -47,10 +47,16 @@ installed.
 To install it by hand the system partition needs to be writable.
 
 ```
+# Only needed once (and again if full 'm' build is performed and cuttlefish is restarted):
 adb root
-# Only needed once (`adb reboot` required)
 adb disable-verity
+adb reboot
+
+# Needed after every reboot of device:
+adb root
 adb remount system
+
+# To upload changed files:
 adb sync system
 ```
 
