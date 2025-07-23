@@ -29,10 +29,6 @@ Add to `MainActivity.java` in function `setupUI`:
 
                         runOnUiThread(() -> textViewGear.setText("Gear: " + carPropertyValue.getValue()));
                     }
-                    @Override
-                    public void onErrorEvent(int propertyId, int areaId, int errorCode) {
-                        Log.e(TAG, "onErrorEvent: propertyId=" + propertyId + " areaId=" + areaId + " errorCode=" + errorCode);
-                    }
 
                     @Override
                     public void onErrorEvent(int propertyId, int areaId) {
