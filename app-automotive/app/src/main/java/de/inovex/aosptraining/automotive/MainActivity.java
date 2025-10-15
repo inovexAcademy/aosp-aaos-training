@@ -52,7 +52,7 @@ public class MainActivity extends Activity implements Car.CarServiceLifecycleLis
     private void setupUI() {
         carPropertyManager = (CarPropertyManager) car.getCarManager(android.car.Car.PROPERTY_SERVICE);
 
-        // Add your code here!
+        // Add your code for INFO_MODEL and CURRENT_GEAR here!
     }
 
     @Override
