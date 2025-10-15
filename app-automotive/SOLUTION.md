@@ -15,13 +15,13 @@ Add to `MainActivity.java` in function `setupUI`:
 
     [...]
 
-        CarPropertyValue<String> prop = carPropertyManager.getProperty(VehiclePropertyIds.INFO_MODEL, VehicleAreaType.VEHICLE_AREA_TYPE_GLOBAL);
+        CarPropertyValue<String> prop = carPropertyManager.getProperty(VehiclePropertyIds.INFO_MODEL, 0);
         Log.d(TAG, "model=" + prop.getValue());
         textViewModel.setText("Model: " + prop.getValue());
 
-        int currentGear = carPropertyManager.getIntProperty(VehiclePropertyIds.CURRENT_GEAR, VehicleAreaType.VEHICLE_AREA_TYPE_GLOBAL);
+        int currentGear = carPropertyManager.getIntProperty(VehiclePropertyIds.CURRENT_GEAR, 0);
         Log.d(TAG, "currentGear=" + currentGear);
-        carPropertyManager.subscribePropertyEvents(VehiclePropertyIds.CURRENT_GEAR, VehicleAreaType.VEHICLE_AREA_TYPE_GLOBAL,
+        carPropertyManager.subscribePropertyEvents(VehiclePropertyIds.CURRENT_GEAR, 0,
                 new CarPropertyManager.CarPropertyEventCallback() {
                     @Override
                     public void onChangeEvent(CarPropertyValue carPropertyValue) {
