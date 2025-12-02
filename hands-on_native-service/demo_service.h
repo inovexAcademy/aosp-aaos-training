@@ -15,7 +15,7 @@ namespace demo {
 
 static constexpr char kDemoServiceName[] = "demoservice";
 
-class DemoService : public android::BinderService<DemoService>, public BnDemoService {
+class DemoService : public BnDemoService {
   public:
     static void RegisterService(const char* name);
 
