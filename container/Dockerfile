@@ -30,13 +30,13 @@ RUN apt-get update && apt-get install -qy --no-install-recommends \
 
 
 # Build and install cuttlefish
-# - pin to a specific commit "0858763784" to avoid build issues when upstream
+# - pin to a specific commit "88190ff974" to avoid build issues when upstream
 #   changes.
 # - download, build and install in multiple steps to make updating the
 #   Dockerfile easier.
 RUN mkdir /tools && cd /tools \
     && git clone https://github.com/google/android-cuttlefish && cd android-cuttlefish \
-    && git switch -c build-branch 0858763784e322278d5a23feb3456d66cbc0f17c
+    && git switch -c build-branch 88190ff9749adecfac6e6371b5d83d70bed0fabf
 
 RUN cd /tools/android-cuttlefish \
     && tools/buildutils/build_packages.sh
