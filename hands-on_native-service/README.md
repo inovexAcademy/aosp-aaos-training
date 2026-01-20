@@ -28,9 +28,9 @@ over binder to the demoservice.
 Verify:
 
 If the service is build correctly you can find it's binary under:
-`out/target/product/trout_x86_64/system/bin/demo`
+`out/target/product/vsoc_x86_64_only/system/bin/demo`
 and
-`out/target/product/trout_x86_64/system/bin/demo-client`
+`out/target/product/vsoc_x86_64_only/system/bin/demo-client`
 
 
 Hints:
@@ -145,13 +145,14 @@ Call the new service implementation. (The `service` command has a help / usage m
 
 # Step 5: (Optional) Add the service to product and init system
 
+`Caution: This step does not work until you proceeded with the steps in chapter B07b of the training handout.`
 
 For the init system see:
  - Other services (e.g system/gsid).
  - https://android.googlesource.com/platform/system/core/+/master/init/README.md
 
 To add the service binary `demo` and the `demo-client` to the Android product see:
- - `device/google/trout/` the `aosp_trout_x86_64.mk` and `aosp_trout_common.mk`.
+ - `packages/services/Car/car_product/build/` the `car_generic_system.mk`
  - And add the module to the `PRODUCT_PACKAGES`.
 
 

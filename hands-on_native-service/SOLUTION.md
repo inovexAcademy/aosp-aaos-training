@@ -78,15 +78,16 @@ android::binder::Status DemoService::calculate(int32_t a, int32_t b, int32_t* _a
 
 # Step 5 - Add the service to product and init system
 
-Add the services to `device/google/trout/aosp_trout_common.mk`.
+Add the services to `packages/services/Car/car_product/build/car_generic_system.mk`.
 ```
 PRODUCT_PACKAGES += demo demo-client
 ```
 
-Create an `demo.rc` init file:
+Create a `demo.rc` init file:
 ```
 service demo /system/bin/demo
     interface aidl demoservice
+    class main
     user root
 ```
 
