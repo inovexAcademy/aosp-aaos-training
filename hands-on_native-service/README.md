@@ -28,9 +28,9 @@ over binder to the demoservice.
 Verify:
 
 If the service is build correctly you can find it's binary under:
-`out/target/product/vsoc_x86_64_only/system/bin/demo`
+`out/target/product/vsoc_x86_64_only/system_ext/bin/demo`
 and
-`out/target/product/vsoc_x86_64_only/system/bin/demo-client`
+`out/target/product/vsoc_x86_64_only/system_ext/bin/demo-client`
 
 
 Hints:
