@@ -54,10 +54,10 @@ adb reboot
 
 # Needed after every reboot of device:
 adb root
-adb remount system
+adb remount system system_ext
 
 # To upload changed files:
-adb sync system
+adb sync system && adb sync system_ext
 ```
 
 And then run the service manually `demo`.
