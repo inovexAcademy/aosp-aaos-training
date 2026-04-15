@@ -31,6 +31,7 @@ cc_defaults {
 
 cc_binary {
     name: "demo",
+    system_ext_specific: true,
     defaults: [
         "demo_defaults",
     ],
@@ -42,6 +43,7 @@ cc_binary {
 
 cc_binary {
     name: "demo-client",
+    system_ext_specific: true,
     defaults: [
         "demo_defaults",
     ],
