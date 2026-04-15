@@ -88,9 +88,7 @@ out/soong/.intermediates/system/demo/demo_aidl_interface-cpp-source/gen/
 
 Verify:
 
- - The running service is shown in `service list`.
-   (If the `service list` command hangs stop it with CTRL-C.
-   As an alternative, you might want to fall back to using `dumpsys -l`)
+ - The running service is shown in `dumpsys -l`.
  - Running `demo-client hello` works.
  - `service call ...` works.
 
