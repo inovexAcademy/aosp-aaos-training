@@ -149,9 +149,9 @@ For the init system see:
  - Other services (e.g system/gsid).
  - https://android.googlesource.com/platform/system/core/+/master/init/README.md
 
-To add the service binary `demo` and the `demo-client` to the Android product see:
- - `packages/services/Car/car_product/build/` the `car_generic_system.mk`
- - And add the module to the `PRODUCT_PACKAGES`.
+To add the service binary `demo` and the `demo-client` to the Android product. See:
+ - In `packages/services/Car/car_product/build/` edit the file `car_system_ext.mk`
+ - Add the `demo` and `demo-client` modules to the `PRODUCT_PACKAGES` list.
 
 
 Verify:
