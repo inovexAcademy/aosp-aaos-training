@@ -3,14 +3,14 @@
 
 # Step 1
 
-```
+```bash
 cd system/demo
 mm demo
 ```
 
 # Step 2
 
-```
+```bash
 $ service call demoservice 1
 Result: Parcel(
 0x00000000: 00000000 0000000b 00650048 006c006c '........H.e.l.l.'
@@ -26,7 +26,7 @@ and the C++ logger with `android-base/logging.h` in the libbase.
 
 
 C++
-```
+```c++
 #include <android-base/logging.h>
 
 int main(...) {
@@ -39,7 +39,7 @@ int main(...) {
 
 
 C Style
-```
+```c
 ALOGI("Register to service manager");
 ALOGI("Service demoservice is registerd");
 ALOGE("Unable to get default service manager!");
@@ -56,17 +56,17 @@ Logcat output
 # Step 4 - AIDL Function
 
 Add the calculate function to the `aidl/example/demo/IDemoService.aidl`.
-```
+```java
 int calculate(int a, int b);
 ```
 
 Extend the `demo_service.h`:
-```
+```c++
 android::binder::Status calculate(int32_t a, int32_t b, int32_t* _aidl_return);
 ```
 
 Extend the `demo_service.cpp`:
-```
+```c++
 android::binder::Status DemoService::calculate(int32_t a, int32_t b, int32_t* _aidl_return) {
     std::cout << "calculate called";
 
@@ -78,21 +78,21 @@ android::binder::Status DemoService::calculate(int32_t a, int32_t b, int32_t* _a
 
 # Step 5 - Add the service to product and init system
 
-Add the services to `packages/services/Car/car_product/build/car_generic_system.mk`.
-```
+Add the services to `packages/services/Car/car_product/build/car_system_ext.mk`.
+```bash
 PRODUCT_PACKAGES += demo demo-client
 ```
 
-Create a `demo.rc` init file:
-```
-service demo /system/bin/demo
+Create a `demo.rc` init file within the root of the demo service source tree:
+```bash
+service demo /system_ext/bin/demo
     interface aidl demoservice
     class main
     user root
 ```
 
 Extend the Android.bp file for the demo cc_binary:
-```
+```json
 cc_binary {
     name: "demo",
 ...
