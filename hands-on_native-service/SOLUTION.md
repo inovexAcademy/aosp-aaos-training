@@ -102,3 +102,6 @@ cc_binary {
 ...
 ```
 
+The service is then registered with the init system.
+To start it on boot some SELinux rules are needed.
+See the next exercises: "Inspect SELinux Actions During Runtime"
