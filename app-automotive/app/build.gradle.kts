@@ -6,7 +6,9 @@ plugins {
 android {
     namespace = "de.inovex.aosptraining.automotive"
     compileSdk = 35
+
     useLibrary("android.car")
+
     defaultConfig {
         applicationId = "de.inovex.aosptraining.automotive"
         minSdk = 32
@@ -26,13 +28,12 @@ android {
             )
         }
     }
+
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
     }
-    kotlinOptions {
-        jvmTarget = "11"
-    }
+
     buildFeatures {
         viewBinding = true
     }
