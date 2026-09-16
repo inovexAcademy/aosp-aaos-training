@@ -3,7 +3,6 @@
 
 #include <iostream>
 
-#include <android-base/logging.h>
 #include <binder/BinderService.h>
 #include <binder/IPCThreadState.h>
 #include <binder/IServiceManager.h>
@@ -24,7 +23,7 @@ int main() {
     ps->startThreadPool();
     ps->giveThreadPoolName();
 
-    std::cout << "Service demoservice is registerd\n";
+    std::cout << "Service demoservice is registered\n";
 
     android::IPCThreadState::self()->joinThreadPool();
 

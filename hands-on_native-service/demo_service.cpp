@@ -9,7 +9,6 @@
 #include <unistd.h>
 #include <string>
 
-#include <android-base/logging.h>
 #include <binder/IServiceManager.h>
 
 namespace example {
@@ -38,7 +37,7 @@ void DemoService::RegisterService(const char* name) {
 }
 
 /**
- * getHelloWorld is inoveked by a remote service over binder.
+ * getHelloWorld is invoked by a remote service over binder.
  */
 android::binder::Status DemoService::getHelloWorld(std::string* _aidl_return) {
     std::cout << "getHelloWorld called";

@@ -8,7 +8,7 @@ over binder to the demoservice.
 ## Limitations:
 
  - The example service ignores all permission handling.
- - No auto start over the init deamon.
+ - No auto start over the init daemon.
  - The service needs manual deployment, it is not added to a device/product.
  - No integration of the service's git repo into the build tree with `repo`.
 
@@ -41,7 +41,7 @@ Hints:
 
 # Step 2: Run the service on a (virtual) device
 
-As the service is not integrated into an product it is not automatically
+As the service is not integrated into a product it is not automatically
 installed.
 
 To install it by hand the system partition needs to be writable.
@@ -95,12 +95,11 @@ Verify:
 
 # Step 3: Log to the system log buffers (logcat)
 
-Currently the service only logs to the standard output.
+Currently, the service only logs to the standard output.
 But if the service is running under the `init` daemon these logs would not show
 up in the logcat.
 
 Add logging to the system logcat buffer to the service calls.
-
 
 There is a C library liblog.
 And the C++ logger with `android-base/logging.h` in the libbase.
@@ -111,7 +110,7 @@ See the readme of the libbase library [/system/libbase/README.md](https://cs.and
 
 ## Verify
 
-The added log messages appearer in `adb logcat`.
+The added log messages appear in `adb logcat`.
 
 
 ## Hints
