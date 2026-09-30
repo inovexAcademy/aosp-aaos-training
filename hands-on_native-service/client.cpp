@@ -4,7 +4,6 @@
 #include <iostream>
 #include <string>
 
-#include <android-base/logging.h>
 #include <binder/BinderService.h>
 #include <binder/IPCThreadState.h>
 #include <binder/IServiceManager.h>

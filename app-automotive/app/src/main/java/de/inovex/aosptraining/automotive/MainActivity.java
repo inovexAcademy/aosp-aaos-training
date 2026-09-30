@@ -58,7 +58,11 @@ public class MainActivity extends Activity implements Car.CarServiceLifecycleLis
     @Override
     public void onDestroy() {
         car.disconnect();
-        // TODO: strop/halt/destroy handlerThread
+
+        if (handlerThread != null) {
+            handlerThread.quit();
+        }
+
         super.onDestroy();
     }
 }
