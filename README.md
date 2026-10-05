@@ -1,3 +1,6 @@
+> [!NOTE]  
+> The examples were successfully tested with all Android Studio versions between Meerkat 2024.3.1 Patch 2 and Quali 4 2026.1.4
+
 # AOSP and AAOS Training
 
 This repository should contain source code, snippets and examples for the AOSP
