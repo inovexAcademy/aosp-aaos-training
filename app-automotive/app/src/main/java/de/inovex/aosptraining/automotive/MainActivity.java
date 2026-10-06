@@ -21,6 +21,8 @@ public class MainActivity extends Activity implements Car.CarServiceLifecycleLis
     private TextView textViewModel;
     private TextView textViewGear;
 
+    private final NetworkRequestExample networkRequestExample = new NetworkRequestExample();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,8 +37,11 @@ public class MainActivity extends Activity implements Car.CarServiceLifecycleLis
 
         car = Car.createCar(this, handler, 1_000, this );
 
+        // Uncomment for the NetworkRequest exercise
+        // networkRequestExample.requestNetwork(getApplicationContext());
         Log.i(TAG, "onCreate() done");
     }
+
 
     @Override
     public void onLifecycleChanged(Car car, boolean ready) {
