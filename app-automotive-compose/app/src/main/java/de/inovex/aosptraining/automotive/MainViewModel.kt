@@ -4,6 +4,7 @@ import android.app.Application
 import android.car.Car
 import android.car.VehicleGear
 import android.car.VehiclePropertyIds
+import android.car.hardware.CarPropertyValue
 import android.car.hardware.property.CarPropertyManager
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
@@ -64,8 +65,28 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     private val currentGear = callbackFlow {
         Log.d(TAG, "Observing CURRENT_GEAR changes")
 
-        // Add your code to receive gear changes immediately and display the received value on the UI
+        val property = VehiclePropertyIds.CURRENT_GEAR
+        val manager = carPropertyManager.first()
 
+        val callback = object : CarPropertyManager.CarPropertyEventCallback {
+            override fun onChangeEvent(value: CarPropertyValue<*>) {
+                Log.d(TAG, "CURRENT_GEAR value received: ${value.value}")
+                trySend(value.value as Int)
+            }
+
+            override fun onErrorEvent(propertyId: Int, areaId: Int) {
+                Log.d(TAG, "Error for property $propertyId in area $areaId")
+            }
+        }
+
+        // Subscribing delivers the current value immediately, then every change.
+        manager.subscribePropertyEvents(property, callback)
+
+        awaitClose {
+            runCatching { manager.unsubscribePropertyEvents(property, callback) }
+                .onFailure { Log.w(TAG, "Failed to unsubscribe property $property: ${it.message}") }
+            Log.d(TAG, "Finished observing CURRENT_GEAR changes")
+        }
     }
 
     val uiState = combine(
