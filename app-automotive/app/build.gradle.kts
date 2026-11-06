@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "de.inovex.aosptraining.automotive"
-    compileSdk = 35
+    compileSdk = 37
 
     useLibrary("android.car")
 
