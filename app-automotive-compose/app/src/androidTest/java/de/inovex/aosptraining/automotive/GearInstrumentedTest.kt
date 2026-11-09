@@ -22,8 +22,8 @@ class GearInstrumentedTest {
     fun testCurrentVehicleGear() {
         val testGear = VehicleGear.GEAR_PARK
 
-        injectGearChange(testGear)
-        composeTestRule.waitUntilExactlyOneExists(hasText("Gear: ${VehicleGear.toString(testGear)}"))
+        // Add the test code to check if the expected gear is displayed correctly in our app
+
     }
 
     @OptIn(ExperimentalTestApi::class)
@@ -31,15 +31,16 @@ class GearInstrumentedTest {
     fun testGearChange() {
         val testGears = listOf(VehicleGear.GEAR_DRIVE, VehicleGear.GEAR_REVERSE)
 
-        testGears.forEach { gear ->
-            injectGearChange(gear)
-            composeTestRule.waitUntilExactlyOneExists(hasText("Gear: ${VehicleGear.toString(gear)}"))
-        }
+        // Write a test that checks if the value changes as expected while the app is running and
+        // gear changes are getting executed in the background through this testing code
+
     }
 
     private fun injectGearChange(gear: Int) {
         InstrumentationRegistry.getInstrumentation().uiAutomation.executeShellCommand(
-            "dumpsys activity service com.android.car inject-vhal-event ${VehiclePropertyIds.CURRENT_GEAR} $gear"
+
+            // Add the adb command to change the value of the VehiclePropertyIds.CURRENT_GEAR
+
         ).close()
     }
 }
