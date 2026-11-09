@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">AOSPTrainingAutomotive</string>
+    <string name="model_text">Model: %1$s</string>
+    <string name="gear_text">Gear: %1$s</string>
+</resources>
