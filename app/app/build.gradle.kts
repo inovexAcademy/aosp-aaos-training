@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "de.inovex.aosptraining"
-    compileSdk = 37
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "de.inovex.aosptraining"
